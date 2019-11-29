@@ -1,0 +1,32 @@
+.achive {
+  flex-direction: column;
+  padding: 0 16px;
+}
+
+.name {
+  margin: 12px 0;
+}
+
+.wrapper {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.img {
+  margin-bottom: 8px;
+}
+
+.img:not(:last-child) {
+  margin-right: 8px;
+}
+
+.active {
+  border: 2px solid #007aff;
+  filter: brightness(60%);
+  transition: all 0.3s ease 0s;
+  box-shadow: 0px 15px 20px rgba(0, 122, 255, 0.4);
+}
+
+.bet {
+  margin: 32px 0 14px;
+}
