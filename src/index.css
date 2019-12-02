@@ -21,6 +21,7 @@ a {
   justify-content: space-between;
   padding: 16px;
   border-bottom: 1px solid #bcbbc1;
+  flex-wrap: wrap;
 }
 
 .title {
@@ -58,6 +59,10 @@ a {
   left: 50%;
   top: 50%;
   animation: rotate 1s infinite linear;
+}
+
+.top {
+  margin-top: 12px;
 }
 
 @keyframes rotate {
