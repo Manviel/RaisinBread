@@ -28,7 +28,7 @@ const Player = () => {
     <article className="modal">
       <div className="content">
         {canClose && (
-          <span class="close" onClick={() => dispatch({ type: "video" })}>
+          <span className="close" onClick={() => dispatch({ type: "video" })}>
             &times;
           </span>
         )}
