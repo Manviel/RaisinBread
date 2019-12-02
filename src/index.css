@@ -1,3 +1,11 @@
+:root {
+  --c-primary: #007aff;
+  --c-secondary: #666666;
+  --c-light: rgba(142, 142, 147, 0.12);
+  --c-basic: #ccc;
+  --c-dark: #e6e6e6;
+}
+
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
@@ -13,19 +21,19 @@ body {
 
 a {
   text-decoration: none;
-  color: #007aff;
+  color: var(--c-primary);
 }
 
 .header {
   display: flex;
   justify-content: space-between;
   padding: 16px;
-  border-bottom: 1px solid #bcbbc1;
+  border-bottom: 1px solid var(--c-dark);
   flex-wrap: wrap;
 }
 
 .title {
-  color: #666666;
+  color: var(--c-secondary);
   font-weight: bold;
   font-size: 34px;
 }
@@ -37,7 +45,7 @@ a {
 }
 
 .btn {
-  background: #007aff;
+  background: var(--c-primary);
   border-radius: 23px;
   border: none;
   color: #fff;
@@ -52,8 +60,8 @@ a {
   height: 0;
   width: 0;
   padding: 15px;
-  border: 6px solid #ccc;
-  border-right-color: #888;
+  border: 6px solid var(--c-basic);
+  border-right-color: var(--c-dark);
   border-radius: 22px;
   position: absolute;
   left: 50%;

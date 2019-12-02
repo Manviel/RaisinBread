@@ -4,7 +4,7 @@
 }
 
 .control {
-  background-color: rgba(142, 142, 147, 0.12);
+  background-color: var(--c-light);
   border-radius: 10px;
   font-size: 17px;
   padding: 10px 20px;

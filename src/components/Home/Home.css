@@ -5,10 +5,10 @@
 .box {
   width: 360px;
   height: 360px;
-  background-color: rgba(142, 142, 147, 0.12);
+  background-color: var(--c-light);
   margin: 10px;
   border-radius: 10px;
-  color: #666666;
+  color: var(--c-secondary);
   font-size: 28px;
 }
 

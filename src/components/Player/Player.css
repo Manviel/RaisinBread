@@ -10,7 +10,7 @@
 }
 
 .content {
-  background-color: #fefefe;
+  background-color: var(--c-basic);
   margin: 15% auto;
   padding: 20px;
   width: 60%;
@@ -21,7 +21,7 @@
 }
 
 .close {
-  color: #aaa;
+  color: var(--c-basic);
   font-size: 28px;
   font-weight: bold;
   position: absolute;
