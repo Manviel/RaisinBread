@@ -2,6 +2,8 @@ import React, { useContext } from "react";
 
 import { DataContext } from "../../utils/context";
 
+import Player from "../Player";
+
 import "./Achievement.css";
 
 const Achievement = () => {
@@ -16,6 +18,8 @@ const Achievement = () => {
   };
 
   const handleSubmit = () => {
+    dispatch({ type: "click" });
+
     const chance = Math.round(Math.random() * 1);
 
     if (chance === 1) {
@@ -71,6 +75,8 @@ const Achievement = () => {
           </button>
         </>
       )}
+
+      {state.clicks === 5 && <Player />}
     </section>
   );
 };

@@ -19,13 +19,27 @@ const reducer = (state, action) => {
         data: [],
         selected: []
       };
+    case "click":
+      return {
+        ...state,
+        clicks: state.clicks + 1
+      };
+    case "video":
+      return {
+        ...state,
+        clicks: 0
+      };
     default:
       return { ...state };
   }
 };
 
 export const Store = props => {
-  const [state, dispatch] = useReducer(reducer, { data: [], selected: [] });
+  const [state, dispatch] = useReducer(reducer, {
+    data: [],
+    selected: [],
+    clicks: 0
+  });
 
   return (
     <DataContext.Provider
