@@ -22,7 +22,7 @@ const Home = () => {
   }, [getData]);
 
   return (
-    <section className="flex home">
+    <section className="flex home top">
       {data.length > 0 ? (
         data.map(gif => (
           <Card key={gif.id} gif={gif} offset={offset} setOffset={setOffset} />

@@ -1,35 +1,47 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 
 import useForm from "../../utils/useForm";
 import validate from "./validation";
 
-import "./Login.css";
+import "../Login/Login.css";
 
-const Login = props => {
-  const [status, setStatus] = useState();
+const SignUp = props => {
+  const signUp = () => {
+    localStorage.setItem("user", JSON.stringify(values));
+    localStorage.setItem("active", JSON.stringify(values));
 
-  const login = () => {
-    const user = JSON.parse(localStorage.getItem("user"));
-
-    if (user.email === values.email && user.password === values.password) {
-      localStorage.setItem("active", JSON.stringify(values));
-
-      props.history.push("/");
-    } else {
-      setStatus("User with such data not found");
-    }
+    props.history.push("/");
   };
 
   const { values, errors, handleChange, handleSubmit } = useForm(
-    login,
+    signUp,
     validate
   );
 
   return (
     <form className="flex login" onSubmit={handleSubmit} noValidate>
-      <h1 className="title">Login</h1>
-      {status && <span className="helper top">{status}</span>}
+      <h1 className="title">Sign Up</h1>
+      <input
+        name="firstName"
+        type="text"
+        placeholder="First name"
+        className="control"
+        onChange={handleChange}
+        value={values.firstName || ""}
+        required
+      />
+      {errors.firstName && <span className="helper">{errors.firstName}</span>}
+      <input
+        name="lastName"
+        type="text"
+        placeholder="Last name"
+        className="control"
+        onChange={handleChange}
+        value={values.lastName || ""}
+        required
+      />
+      {errors.lastName && <span className="helper">{errors.lastName}</span>}
       <input
         name="email"
         type="email"
@@ -51,13 +63,13 @@ const Login = props => {
       />
       {errors.password && <span className="helper">{errors.password}</span>}
       <button type="submit" className="btn">
-        Log in
+        Sign up
       </button>
       <p className="reference">
-        Don't have an account? <Link to="signup">Sign up</Link>
+        Already registered <Link to="login">Log in</Link>
       </p>
     </form>
   );
 };
 
-export default Login;
+export default SignUp;
