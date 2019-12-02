@@ -10,7 +10,7 @@
 }
 
 .content {
-  background-color: var(--c-basic);
+  background-color: #fff;
   margin: 15% auto;
   padding: 20px;
   width: 60%;
@@ -27,5 +27,9 @@
   position: absolute;
   top: 5px;
   right: 10px;
+}
+
+.close:hover {
   cursor: pointer;
+  color: var(--c-secondary);
 }
