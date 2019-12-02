@@ -44,6 +44,10 @@ a {
   align-items: center;
 }
 
+.col {
+  flex-direction: column;
+}
+
 .btn {
   background: var(--c-primary);
   border-radius: 23px;

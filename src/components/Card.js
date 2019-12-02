@@ -28,7 +28,10 @@ const Card = ({ gif, offset, setOffset, index, chance }) => {
     <section className="box">
       <div className="overlay flex" onClick={() => handleClick(gif)}>
         {popup === gif.id ? (
-          <img src={gif.images.downsized.url} alt={gif.slug} className="pic" />
+          <div
+            style={{ backgroundImage: `url(${gif.images.downsized.url})` }}
+            className="overlay pic"
+          />
         ) : (
           <h2>{popup ? "Try again" : "Click on me"}</h2>
         )}

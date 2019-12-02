@@ -1,5 +1,4 @@
 .achive {
-  flex-direction: column;
   padding: 0 16px;
 }
 
@@ -14,6 +13,9 @@
 
 .img {
   margin-bottom: 8px;
+  width: 158px;
+  height: 158px;
+  border-radius: 4px;
 }
 
 .img:not(:last-child) {
@@ -25,7 +27,6 @@
   filter: brightness(60%);
   transition: all 0.3s ease 0s;
   box-shadow: 0px 15px 20px rgba(0, 122, 255, 0.4);
-  border-radius: 4px;
 }
 
 .bet {

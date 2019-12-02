@@ -2,6 +2,7 @@ import React, { useState, useEffect, useCallback } from "react";
 
 import Card from "../Card";
 import Loader from "../Loader";
+import Achievement from "../Achievement";
 
 import "./Home.css";
 
@@ -24,22 +25,26 @@ const Home = () => {
   const chance = Math.round(Math.random() * 2);
 
   return (
-    <section className="flex home top">
-      {data.length > 0 ? (
-        data.map((gif, index) => (
-          <Card
-            key={gif.id}
-            gif={gif}
-            offset={offset}
-            setOffset={setOffset}
-            index={index}
-            chance={chance}
-          />
-        ))
-      ) : (
-        <Loader />
-      )}
-    </section>
+    <>
+      <section className="flex home top">
+        {data.length > 0 ? (
+          data.map((gif, index) => (
+            <Card
+              key={gif.id}
+              gif={gif}
+              offset={offset}
+              setOffset={setOffset}
+              index={index}
+              chance={chance}
+            />
+          ))
+        ) : (
+          <Loader />
+        )}
+      </section>
+
+      <Achievement />
+    </>
   );
 };
 

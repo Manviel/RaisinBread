@@ -14,7 +14,7 @@ const PrivateRoute = lazy(() => import("../utils/PrivateRoute"));
 const App = () => (
   <Suspense fallback={<Loader />}>
     <Header />
-    <div className="flex">
+    <div className="flex col">
       <Switch>
         <PrivateRoute exact path="/" component={Home} />
         <PrivateRoute exact path="/achievement" component={Achievement} />

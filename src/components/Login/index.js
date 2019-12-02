@@ -27,7 +27,7 @@ const Login = props => {
   );
 
   return (
-    <form className="flex login" onSubmit={handleSubmit} noValidate>
+    <form className="flex col login" onSubmit={handleSubmit} noValidate>
       <h1 className="title">Login</h1>
       {status && <span className="helper top">{status}</span>}
       <input

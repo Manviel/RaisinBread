@@ -43,9 +43,7 @@ const Achievement = () => {
   };
 
   return (
-    <section className="flex achive">
-      <h2 className="name">Achievement</h2>
-
+    <section className="flex col achive top">
       {state.data.length > 0 ? (
         <>
           <article className="wrapper">
