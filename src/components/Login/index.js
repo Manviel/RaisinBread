@@ -12,7 +12,11 @@ const Login = props => {
   const login = () => {
     const user = JSON.parse(localStorage.getItem("user"));
 
-    if (user.email === values.email && user.password === values.password) {
+    if (
+      user &&
+      user.email === values.email &&
+      user.password === values.password
+    ) {
       localStorage.setItem("active", JSON.stringify(values));
 
       props.history.push("/");

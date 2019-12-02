@@ -20,7 +20,7 @@ const SignUp = props => {
   );
 
   return (
-    <form className="flex login" onSubmit={handleSubmit} noValidate>
+    <form className="flex col login" onSubmit={handleSubmit} noValidate>
       <h1 className="title">Sign Up</h1>
       <input
         name="firstName"

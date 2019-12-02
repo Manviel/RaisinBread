@@ -15,13 +15,13 @@ const Card = ({ gif, offset, setOffset, index, chance }) => {
         type: "update",
         payload: { id: item.id, url: item.images.downsized.url }
       });
-
-      setTimeout(() => {
-        setOffset(offset + 3);
-      }, 2000);
     } else {
       setPopup("lost");
     }
+
+    setTimeout(() => {
+      setOffset(offset + 3);
+    }, 1000);
   };
 
   return (
