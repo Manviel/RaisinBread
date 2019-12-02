@@ -20,15 +20,9 @@ const reducer = (state, action) => {
         selected: []
       };
     case "click":
-      return {
-        ...state,
-        clicks: state.clicks + 1
-      };
+      return { ...state, clicks: state.clicks + 1 };
     case "video":
-      return {
-        ...state,
-        clicks: 0
-      };
+      return { ...state, clicks: 0 };
     default:
       return { ...state };
   }

@@ -2,22 +2,26 @@ import React, { useState, useContext } from "react";
 
 import { DataContext } from "../utils/context";
 
-const Card = ({ gif, offset, setOffset }) => {
+const Card = ({ gif, offset, setOffset, index, chance }) => {
   const { dispatch } = useContext(DataContext);
 
   const [popup, setPopup] = useState();
 
   const handleClick = item => {
-    setPopup(item.id);
+    if (index === chance) {
+      setPopup(item.id);
 
-    dispatch({
-      type: "update",
-      payload: { id: item.id, url: item.images.downsized.url }
-    });
+      dispatch({
+        type: "update",
+        payload: { id: item.id, url: item.images.downsized.url }
+      });
 
-    setTimeout(() => {
-      setOffset(offset + 3);
-    }, 2000);
+      setTimeout(() => {
+        setOffset(offset + 3);
+      }, 2000);
+    } else {
+      setPopup("lost");
+    }
   };
 
   return (
@@ -26,7 +30,7 @@ const Card = ({ gif, offset, setOffset }) => {
         {popup === gif.id ? (
           <img src={gif.images.downsized.url} alt={gif.slug} className="pic" />
         ) : (
-          <h2>Click on me</h2>
+          <h2>{popup ? "Try again" : "Click on me"}</h2>
         )}
       </div>
     </section>
