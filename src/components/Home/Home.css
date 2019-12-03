@@ -1,5 +1,6 @@
 .home {
   flex-wrap: wrap;
+  visibility: hidden;
 }
 
 .box {
@@ -22,4 +23,23 @@
   background-position: center;
   background-size: cover;
   animation: 0.3s ease-in-out both fade-in;
+}
+
+.home > * {
+  visibility: visible;
+}
+
+.home > * {
+  transition: opacity 150ms linear 100ms, transform 150ms ease-in-out 100ms;
+}
+
+.home:hover > * {
+  opacity: 0.4;
+  transform: scale(0.9);
+}
+
+.home > *:hover {
+  opacity: 1;
+  transform: scale(1);
+  transition-delay: 0ms, 0ms;
 }
