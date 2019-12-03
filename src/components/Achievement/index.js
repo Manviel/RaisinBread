@@ -49,10 +49,10 @@ const Achievement = () => {
           <article className="wrapper">
             {state.data.map(gif => (
               <img
+                key={gif.id}
                 className={
                   state.selected.includes(gif.id) ? "img active" : "img"
                 }
-                key={gif.id}
                 src={gif.url}
                 alt={gif.id}
                 onClick={() => handleSelect(gif.id)}

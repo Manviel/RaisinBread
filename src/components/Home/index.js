@@ -31,7 +31,7 @@ const Home = () => {
         {data.length > 0 ? (
           data.map((gif, index) => (
             <Card
-              key={gif.id}
+              key={gif.slug}
               gif={gif}
               offset={offset}
               setOffset={setOffset}
