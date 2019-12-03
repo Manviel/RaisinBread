@@ -13,10 +13,10 @@ const reducer = (state, action) => {
         ...state,
         selected: state.selected.filter(e => e !== action.payload)
       };
-    case "loose":
+    case "lost":
       return {
         ...state,
-        data: [],
+        data: state.data.filter(el => !action.payload.includes(el.id)),
         selected: []
       };
     case "click":

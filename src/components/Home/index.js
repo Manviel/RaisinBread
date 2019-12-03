@@ -9,6 +9,7 @@ import "./Home.css";
 const Home = () => {
   const [data, setData] = useState([]);
   const [offset, setOffset] = useState(0);
+  const [disable, setDisable] = useState(false);
 
   const getData = useCallback(() => {
     fetch(
@@ -36,6 +37,8 @@ const Home = () => {
               setOffset={setOffset}
               index={index}
               chance={chance}
+              disable={disable}
+              setDisable={setDisable}
             />
           ))
         ) : (

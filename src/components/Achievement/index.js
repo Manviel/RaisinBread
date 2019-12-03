@@ -38,7 +38,7 @@ const Achievement = () => {
           });
       }
     } else {
-      dispatch({ type: "loose" });
+      dispatch({ type: "lost", payload: state.selected });
     }
   };
 
