@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import { createPortal } from "react-dom";
 
 import { DataContext } from "../../utils/context";
 
@@ -74,7 +75,7 @@ const Achievement = () => {
         </>
       )}
 
-      {state.clicks === 5 && <Player />}
+      {state.clicks === 5 && createPortal(<Player />, document.body)}
     </section>
   );
 };
