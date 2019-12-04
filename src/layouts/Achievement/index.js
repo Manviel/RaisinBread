@@ -3,12 +3,12 @@ import { createPortal } from "react-dom";
 
 import { DataContext } from "../../utils/context";
 
-import Player from "../Player";
-import Progress from "../Progress";
-
-import "./Achievement.css";
+import Player from "../../components/Player";
+import Progress from "../../components/Progress";
 
 import { getRandomImage } from "../../services/gifs";
+
+import "./Achievement.css";
 
 const Achievement = () => {
   const { state, dispatch } = useContext(DataContext);

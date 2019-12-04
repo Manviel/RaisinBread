@@ -1,13 +1,13 @@
 import React, { useState, useEffect, useCallback } from "react";
 
-import Card from "../Card";
-import Loader from "../Loader";
-import Achievement from "../Achievement";
-import Checkbox from "../Checkbox";
+import Card from "../../components/Card";
+import Loader from "../../components/Loader";
 
-import "./Home.css";
+import Achievement from "../Achievement";
 
 import { getImages } from "../../services/gifs";
+
+import "./Home.css";
 
 const Home = () => {
   const [data, setData] = useState([]);
@@ -26,8 +26,6 @@ const Home = () => {
 
   return (
     <>
-      <Checkbox />
-
       <section className="flex home top">
         {data.length > 0 ? (
           data.map((gif, index) => (

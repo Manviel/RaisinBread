@@ -6,11 +6,6 @@
   margin: 12px 0;
 }
 
-.wrapper {
-  display: flex;
-  flex-wrap: wrap;
-}
-
 .img {
   margin-bottom: 8px;
   width: 158px;

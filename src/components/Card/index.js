@@ -1,6 +1,8 @@
 import React, { useState, useContext } from "react";
 
-import { DataContext } from "../utils/context";
+import { DataContext } from "../../utils/context";
+
+import "./Card.css";
 
 const Card = ({
   gif,

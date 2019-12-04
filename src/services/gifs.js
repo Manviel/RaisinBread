@@ -13,3 +13,11 @@ export const getRandomImage = async () => {
 
   return await response.json();
 };
+
+export const getTrendingImages = async () => {
+  const response = await fetch(
+    `${process.env.REACT_APP_API}/gifs/trending?api_key=${process.env.REACT_APP_KEY}&limit=6&offset=0`
+  );
+
+  return await response.json();
+};

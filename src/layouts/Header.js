@@ -19,6 +19,9 @@ const Header = props => {
       <Link to="/achievement" className="title">
         Achievement
       </Link>
+      <Link to="/trending" className="title">
+        Trending
+      </Link>
       {activeUser && (
         <button className="btn" onClick={handleSubmit}>
           Log out
