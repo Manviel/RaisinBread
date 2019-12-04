@@ -4,6 +4,7 @@ import { createPortal } from "react-dom";
 import { DataContext } from "../../utils/context";
 
 import Player from "../Player";
+import Progress from "../Progress";
 
 import "./Achievement.css";
 
@@ -49,13 +50,12 @@ const Achievement = () => {
         <>
           <article className="wrapper">
             {state.data.map(gif => (
-              <img
+              <div
                 key={gif.id}
+                style={{ backgroundImage: `url(${gif.url})` }}
                 className={
                   state.selected.includes(gif.id) ? "img active" : "img"
                 }
-                src={gif.url}
-                alt={gif.id}
                 onClick={() => handleSelect(gif.id)}
               />
             ))}
@@ -68,8 +68,8 @@ const Achievement = () => {
 
       {state.selected.length > 0 && (
         <>
-          <p className="bet">You selected {state.selected.length} items</p>
-          <button className="btn" onClick={handleSubmit}>
+          <Progress items={state.selected.length} />
+          <button className="btn top" onClick={handleSubmit}>
             Make a bet
           </button>
         </>
