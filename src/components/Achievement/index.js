@@ -8,6 +8,8 @@ import Progress from "../Progress";
 
 import "./Achievement.css";
 
+import { getRandomImage } from "../../services/gifs";
+
 const Achievement = () => {
   const { state, dispatch } = useContext(DataContext);
 
@@ -26,18 +28,14 @@ const Achievement = () => {
 
     if (chance === 1) {
       for (let i = 0; i < state.selected.length; i++) {
-        fetch(
-          `http://api.giphy.com/v1/gifs/random?api_key=${process.env.REACT_APP_KEY}`
-        )
-          .then(response => response.json())
-          .then(json => {
-            const res = json.data;
+        getRandomImage().then(json => {
+          const res = json.data;
 
-            dispatch({
-              type: "update",
-              payload: { id: res.id, url: res.images.downsized.url }
-            });
+          dispatch({
+            type: "update",
+            payload: { id: res.id, url: res.images.downsized.url }
           });
+        });
       }
     } else {
       dispatch({ type: "lost", payload: state.selected });

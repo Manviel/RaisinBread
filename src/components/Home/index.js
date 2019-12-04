@@ -6,17 +6,15 @@ import Achievement from "../Achievement";
 
 import "./Home.css";
 
+import { getImages } from "../../services/gifs";
+
 const Home = () => {
   const [data, setData] = useState([]);
   const [offset, setOffset] = useState(0);
   const [disable, setDisable] = useState(false);
 
   const getData = useCallback(() => {
-    fetch(
-      `http://api.giphy.com/v1/gifs/search?q=cats&api_key=${process.env.REACT_APP_KEY}&limit=3&offset=${offset}`
-    )
-      .then(response => response.json())
-      .then(json => setData(json.data));
+    getImages(offset).then(json => setData(json.data));
   }, [offset]);
 
   useEffect(() => {
