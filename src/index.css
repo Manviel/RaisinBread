@@ -12,6 +12,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  color: var(--c-secondary);
 }
 
 * {
@@ -28,12 +29,12 @@ a {
   display: flex;
   justify-content: space-between;
   padding: 16px;
-  border-bottom: 1px solid var(--c-dark);
+  border-bottom: 2px solid var(--c-light);
   flex-wrap: wrap;
 }
 
 .title {
-  color: var(--c-secondary);
+  color: inherit;
   font-weight: bold;
   font-size: 34px;
 }
@@ -75,6 +76,11 @@ a {
 
 .top {
   margin-top: 12px;
+}
+
+.dark {
+  background-color: #27292d;
+  color: #e9eaea;
 }
 
 @keyframes rotate {

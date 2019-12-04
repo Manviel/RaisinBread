@@ -3,6 +3,7 @@ import React, { useState, useEffect, useCallback } from "react";
 import Card from "../Card";
 import Loader from "../Loader";
 import Achievement from "../Achievement";
+import Checkbox from "../Checkbox";
 
 import "./Home.css";
 
@@ -25,6 +26,8 @@ const Home = () => {
 
   return (
     <>
+      <Checkbox />
+
       <section className="flex home top">
         {data.length > 0 ? (
           data.map((gif, index) => (
