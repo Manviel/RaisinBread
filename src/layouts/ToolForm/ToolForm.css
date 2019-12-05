@@ -1,3 +1,7 @@
 .group {
-  margin-right: 8px;
+  margin-right: 10px;
+}
+
+.label {
+  width: 100%;
 }

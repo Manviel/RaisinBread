@@ -37,7 +37,7 @@ const ToolForm = () => {
             className="control"
           >
             {params.type.split(", ").map(f => (
-              <option key={`opa_${f}${params.id}`} value={f}>
+              <option key={`op-${f}${params.id}`} value={f}>
                 {f}
               </option>
             ))}
@@ -51,11 +51,7 @@ const ToolForm = () => {
   return (
     <div className="flex center col login">
       <h1 className="title">Form creator</h1>
-      <Form
-        controls={controls}
-        setControls={setControls}
-        handleType={handleType}
-      />
+      <Form controls={controls} setControls={setControls} />
       {controls.map(item => handleType(item))}
     </div>
   );

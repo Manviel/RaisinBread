@@ -24,6 +24,7 @@ const Form = ({ controls, setControls }) => {
   return (
     <form className="form flex center" onSubmit={handleSubmit} noValidate>
       <div className="flex col center group">
+        <label className="label">Type of control</label>
         <select
           name="variation"
           className="control"
@@ -40,6 +41,7 @@ const Form = ({ controls, setControls }) => {
       </div>
 
       <div className="flex col center group">
+        <label className="label">Name of control</label>
         <input
           name="name"
           type="text"
@@ -55,34 +57,40 @@ const Form = ({ controls, setControls }) => {
       {values.variation && (
         <div className="flex col center group">
           {values.variation === "input" && (
-            <select
-              name="type"
-              className="control"
-              onChange={handleChange}
-              value={values.type || ""}
-              required
-            >
-              <option value="">Type of input</option>
-              <option value="text">Text</option>
-              <option value="number">Number</option>
-            </select>
+            <>
+              <label className="label">Type of input</label>
+              <select
+                name="type"
+                className="control"
+                onChange={handleChange}
+                value={values.type || ""}
+                required
+              >
+                <option value="">Type of input</option>
+                <option value="text">Text</option>
+                <option value="number">Number</option>
+              </select>
+            </>
           )}
           {values.variation === "select" && (
-            <input
-              name="type"
-              type="text"
-              className="control"
-              placeholder="Write options separated by commas"
-              onChange={handleChange}
-              value={values.type || ""}
-              required
-            />
+            <>
+              <label className="label">Write options separated by commas</label>
+              <input
+                name="type"
+                type="text"
+                className="control"
+                placeholder="Write options separated by commas"
+                onChange={handleChange}
+                value={values.type || ""}
+                required
+              />
+            </>
           )}
           {errors.type && <span className="helper">{errors.type}</span>}
         </div>
       )}
 
-      <button className="btn" type="submit">
+      <button className="btn top" type="submit">
         Done
       </button>
     </form>

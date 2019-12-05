@@ -11,7 +11,7 @@ const validate = values => {
     errors.name = ERROR;
   }
 
-  if (!values.type) {
+  if (values.variation !== "textarea" && !values.type) {
     errors.type = ERROR;
   }
 
