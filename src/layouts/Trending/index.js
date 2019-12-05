@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 
+import Table from "../Table";
+
 import Loader from "../../components/Loader";
 
 import { getTrendingImages } from "../../services/gifs";
@@ -28,6 +30,8 @@ const Trending = () => {
       ) : (
         <Loader />
       )}
+
+      <Table />
     </section>
   );
 };

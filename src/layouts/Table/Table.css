@@ -1,0 +1,10 @@
+.table {
+  margin: 1em;
+  display: inline-block;
+}
+
+.block {
+  border: 0.5px solid var(--c-secondary);
+  width: 7em;
+  height: 7em;
+}
