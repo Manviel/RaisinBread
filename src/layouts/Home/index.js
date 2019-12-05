@@ -26,7 +26,7 @@ const Home = () => {
 
   return (
     <>
-      <section className="flex home top">
+      <section className="flex center wrapper home top">
         {data.length > 0 ? (
           data.map((gif, index) => (
             <Card

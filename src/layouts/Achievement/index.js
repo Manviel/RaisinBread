@@ -43,10 +43,10 @@ const Achievement = () => {
   };
 
   return (
-    <section className="flex col achive top">
+    <section className="flex center col achive top">
       {state.data.length > 0 ? (
         <>
-          <article className="wrapper">
+          <article className="flex wrapper">
             {state.data.map(gif => (
               <div
                 key={gif.id}

@@ -16,7 +16,7 @@ const Trending = () => {
   }, []);
 
   return (
-    <section className="flex wrapper top">
+    <section className="flex center wrapper top">
       {suggestions.length > 0 ? (
         suggestions.map(su => (
           <div

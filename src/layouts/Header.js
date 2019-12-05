@@ -1,6 +1,6 @@
 import React from "react";
 import { withRouter } from "react-router";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const Header = props => {
   const activeUser = localStorage.getItem("active");
@@ -12,18 +12,28 @@ const Header = props => {
   };
 
   return (
-    <nav className="header">
-      <Link to="/" className="title">
+    <nav className="flex header wrapper">
+      <NavLink exact to="/" className="title" activeClassName="selected">
         Thimbles
-      </Link>
-      <Link to="/achievement" className="title">
+      </NavLink>
+      <NavLink
+        exact
+        to="/achievement"
+        className="title"
+        activeClassName="selected"
+      >
         Achievement
-      </Link>
-      <Link to="/trending" className="title">
+      </NavLink>
+      <NavLink
+        exact
+        to="/trending"
+        className="title"
+        activeClassName="selected"
+      >
         Trending
-      </Link>
+      </NavLink>
       {activeUser && (
-        <button className="btn" onClick={handleSubmit}>
+        <button className="btn bot" onClick={handleSubmit}>
           Log out
         </button>
       )}

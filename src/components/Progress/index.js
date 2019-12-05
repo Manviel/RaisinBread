@@ -13,7 +13,7 @@ const Progress = ({ items }) => (
         strokeDashoffset={440 - (440 * items) / 10}
       ></circle>
     </svg>
-    <h3 className="number">{items}</h3>
+    <h3 className="flex center number">{items}</h3>
   </div>
 );
 

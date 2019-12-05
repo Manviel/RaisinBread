@@ -17,7 +17,7 @@ const PrivateRoute = lazy(() => import("./utils/PrivateRoute"));
 const App = () => (
   <Suspense fallback={<Loader />}>
     <Header />
-    <div className="flex col">
+    <div className="flex center col">
       <Checkbox />
 
       <Switch>

@@ -39,7 +39,7 @@ const Card = ({
 
   return (
     <button
-      className="flex box"
+      className="flex center box"
       disabled={disable}
       onClick={() => handleClick(gif)}
     >
