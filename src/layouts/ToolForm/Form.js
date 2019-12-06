@@ -1,5 +1,7 @@
 import React from "react";
 
+import Checkbox from "../../components/Checkbox";
+
 import useForm from "../../utils/useForm";
 import validate from "./validation";
 
@@ -22,7 +24,11 @@ const Form = ({ controls, setControls }) => {
   );
 
   return (
-    <form className="form flex center" onSubmit={handleSubmit} noValidate>
+    <form
+      className="form flex center wrapper"
+      onSubmit={handleSubmit}
+      noValidate
+    >
       <div className="flex col center group">
         <label className="label">Type of control</label>
         <select
@@ -89,6 +95,15 @@ const Form = ({ controls, setControls }) => {
           {errors.type && <span className="helper">{errors.type}</span>}
         </div>
       )}
+
+      <div className="flex col center group">
+        <label className="label">Required</label>
+        <Checkbox
+          name="required"
+          checked={values.required || false}
+          onChange={handleChange}
+        />
+      </div>
 
       <button className="btn top" type="submit">
         Done

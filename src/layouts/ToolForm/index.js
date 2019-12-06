@@ -8,37 +8,40 @@ import "./ToolForm.css";
 const ToolForm = () => {
   const [controls, setControls] = useState([]);
 
-  const handleType = params => {
-    switch (params.variation) {
+  const handleType = arg => {
+    switch (arg.variation) {
       case "input":
         return (
           <input
-            key={`fc-${params.id}`}
-            name={params.name}
-            type={params.type}
+            key={`fc-${arg.id}`}
+            name={arg.name}
+            type={arg.type}
             className="control"
-            placeholder={params.name}
+            placeholder={arg.name}
+            required={arg.required}
           />
         );
       case "textarea":
         return (
           <textarea
-            key={`fc-${params.id}`}
-            name={params.name}
+            key={`fc-${arg.id}`}
+            name={arg.name}
             className="control"
-            placeholder={params.name}
+            placeholder={arg.name}
+            required={arg.required}
           ></textarea>
         );
       case "select":
         return (
           <select
-            key={`fc-${params.id}`}
-            name={params.name}
+            key={`fc-${arg.id}`}
+            name={arg.name}
             className="control"
+            required={arg.required}
           >
-            {params.type.split(", ").map(f => (
-              <option key={`op-${f}${params.id}`} value={f}>
-                {f}
+            {arg.type.split(", ").map(o => (
+              <option key={`${o}-${arg.id}`} value={o}>
+                {o}
               </option>
             ))}
           </select>
@@ -48,11 +51,23 @@ const ToolForm = () => {
     }
   };
 
+  const handleSubmit = e => {
+    console.log(e.target);
+
+    e.preventDefault();
+  };
+
   return (
     <div className="flex center col login">
       <h1 className="title">Form creator</h1>
       <Form controls={controls} setControls={setControls} />
-      {controls.map(item => handleType(item))}
+
+      {controls.length > 0 && (
+        <form className="flex col" onSubmit={handleSubmit}>
+          {controls.map(item => handleType(item))}
+          <button className="btn">Submit</button>
+        </form>
+      )}
     </div>
   );
 };

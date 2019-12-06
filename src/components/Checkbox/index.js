@@ -1,24 +1,22 @@
 import React from "react";
 
-import useTheme from "../../utils/useTheme";
-
 import "./Checkbox.css";
 
-const Checkbox = () => {
-  const [theme, setTheme] = useTheme();
-
-  return (
-    <section>
-      <input
-        type="checkbox"
-        id="switch"
-        className="theme"
-        checked={theme === "dark"}
-        onChange={setTheme}
-      />
-      <label htmlFor="switch" className="switch"></label>
-    </section>
-  );
-};
+const Checkbox = ({ name, checked, onChange }) => (
+  <>
+    <input
+      type="checkbox"
+      className="theme"
+      name={name}
+      id={name}
+      checked={checked}
+      onChange={onChange}
+    />
+    <label
+      htmlFor={name}
+      className={checked ? "switch check" : "switch"}
+    ></label>
+  </>
+);
 
 export default Checkbox;

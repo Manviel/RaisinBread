@@ -37,6 +37,6 @@ svg circle {
   stroke-width: 10;
   stroke-linecap: round;
   transform: translate(5px, 5px);
-  stroke: rgb(76, 217, 100);
+  stroke: var(--c-green);
   transition: all 0.5s ease;
 }

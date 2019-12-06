@@ -33,5 +33,5 @@
 }
 
 .win {
-  background: rgb(76, 217, 100);
+  background: var(--c-green);
 }

@@ -13,6 +13,11 @@
   transition: 0.4s;
   border-radius: 18px;
   position: relative;
+  margin: 8px 0;
+}
+
+.check {
+  background-color: var(--c-primary);
 }
 
 .switch:after {

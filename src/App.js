@@ -4,6 +4,9 @@ import { Route, Switch } from "react-router-dom";
 import Loader from "./components/Loader";
 import Checkbox from "./components/Checkbox";
 
+import useTheme from "./utils/useTheme";
+import PrivateRoute from "./utils/PrivateRoute";
+
 const Header = lazy(() => import("./layouts/Header"));
 const Home = lazy(() => import("./layouts/Home"));
 const Login = lazy(() => import("./layouts/Login"));
@@ -12,24 +15,30 @@ const SignUp = lazy(() => import("./layouts/SignUp"));
 const Trending = lazy(() => import("./layouts/Trending"));
 const NotFound = lazy(() => import("./layouts/NotFound"));
 
-const PrivateRoute = lazy(() => import("./utils/PrivateRoute"));
+const App = () => {
+  const [theme, setTheme] = useTheme();
 
-const App = () => (
-  <Suspense fallback={<Loader />}>
-    <Header />
-    <div className="flex center col">
-      <Checkbox />
+  return (
+    <Suspense fallback={<Loader />}>
+      <Header />
+      <div className="flex center col">
+        <Checkbox
+          name="switch"
+          checked={theme === "dark"}
+          onChange={setTheme}
+        />
 
-      <Switch>
-        <PrivateRoute exact path="/" component={Home} />
-        <PrivateRoute exact path="/achievement" component={Achievement} />
-        <PrivateRoute exact path="/trending" component={Trending} />
-        <Route path="/login" render={props => <Login {...props} />} />
-        <Route path="/signup" render={props => <SignUp {...props} />} />
-        <Route path="*" component={NotFound} />
-      </Switch>
-    </div>
-  </Suspense>
-);
+        <Switch>
+          <PrivateRoute exact path="/" component={Home} />
+          <PrivateRoute exact path="/achievement" component={Achievement} />
+          <PrivateRoute exact path="/trending" component={Trending} />
+          <Route path="/login" render={props => <Login {...props} />} />
+          <Route path="/signup" render={props => <SignUp {...props} />} />
+          <Route path="*" component={NotFound} />
+        </Switch>
+      </div>
+    </Suspense>
+  );
+};
 
 export default App;
