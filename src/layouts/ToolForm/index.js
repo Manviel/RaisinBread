@@ -2,6 +2,7 @@ import React, { useState } from "react";
 
 import Form from "./Form";
 import validate from "./custom";
+import Ball from "../Ball";
 
 import useForm from "../../utils/useForm";
 
@@ -78,8 +79,11 @@ const ToolForm = () => {
   };
 
   return (
-    <div className="flex center col login">
+    <div className="flex center col top">
       <h1 className="title">Form creator</h1>
+
+      <Ball />
+
       <Form controls={controls} setControls={setControls} />
 
       {controls.length > 0 && (
