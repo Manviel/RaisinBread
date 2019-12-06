@@ -14,6 +14,7 @@ const Achievement = lazy(() => import("./layouts/Achievement"));
 const SignUp = lazy(() => import("./layouts/SignUp"));
 const Trending = lazy(() => import("./layouts/Trending"));
 const NotFound = lazy(() => import("./layouts/NotFound"));
+const ToolForm = lazy(() => import("./layouts/ToolForm"));
 
 const App = () => {
   const [theme, setTheme] = useTheme();
@@ -34,6 +35,7 @@ const App = () => {
           <PrivateRoute exact path="/trending" component={Trending} />
           <Route path="/login" render={props => <Login {...props} />} />
           <Route path="/signup" render={props => <SignUp {...props} />} />
+          <Route path="/tool" component={ToolForm} />
           <Route path="*" component={NotFound} />
         </Switch>
       </div>
