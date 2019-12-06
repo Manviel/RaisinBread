@@ -28,7 +28,7 @@
   left: 16px;
   z-index: 1;
   border-radius: 50%;
-  background: #995710;
+  background: var(--c-secondary);
 }
 
 .eye:last-child {
