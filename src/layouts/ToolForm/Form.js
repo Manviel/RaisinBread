@@ -105,6 +105,26 @@ const Form = ({ controls, setControls }) => {
         />
       </div>
 
+      {controls.length >= 1 && (
+        <div className="flex col center group">
+          <label className="label">Select control to communicate</label>
+          <select
+            name="communicate"
+            className="control"
+            onChange={handleChange}
+            value={values.communicate || ""}
+            required
+          >
+            <option value="">Select control to communicate</option>
+            {controls.map(c => (
+              <option key={`op-${c.id}`} value={c.name}>
+                {c.name}
+              </option>
+            ))}
+          </select>
+        </div>
+      )}
+
       <button className="btn top" type="submit">
         Done
       </button>

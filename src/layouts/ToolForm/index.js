@@ -1,12 +1,23 @@
 import React, { useState } from "react";
 
 import Form from "./Form";
+import validate from "./custom";
+
+import useForm from "../../utils/useForm";
 
 import "../Login/Login.css";
 import "./ToolForm.css";
 
 const ToolForm = () => {
   const [controls, setControls] = useState([]);
+
+  const revision = () => console.log("Success");
+
+  const { values, errors, handleChange, handleSubmit } = useForm(
+    revision,
+    validate,
+    controls
+  );
 
   const handleType = arg => {
     switch (arg.variation) {
@@ -19,6 +30,8 @@ const ToolForm = () => {
             className="control"
             placeholder={arg.name}
             required={arg.required}
+            value={values[arg.name] || ""}
+            onChange={handleChange}
           />
         );
       case "textarea":
@@ -29,6 +42,8 @@ const ToolForm = () => {
             className="control"
             placeholder={arg.name}
             required={arg.required}
+            value={values[arg.name] || ""}
+            onChange={handleChange}
           ></textarea>
         );
       case "select":
@@ -38,7 +53,12 @@ const ToolForm = () => {
             name={arg.name}
             className="control"
             required={arg.required}
+            value={values[arg.name] || ""}
+            onChange={handleChange}
           >
+            <option key={`o-${arg.id}`} value="">
+              {arg.name}
+            </option>
             {arg.type.split(", ").map(o => (
               <option key={`${o}-${arg.id}`} value={o}>
                 {o}
@@ -51,10 +71,10 @@ const ToolForm = () => {
     }
   };
 
-  const handleSubmit = e => {
-    console.log(e.target);
-
-    e.preventDefault();
+  const handleRelation = item => {
+    if (!errors[item.communicate]) {
+      return handleType(item);
+    }
   };
 
   return (
@@ -63,8 +83,17 @@ const ToolForm = () => {
       <Form controls={controls} setControls={setControls} />
 
       {controls.length > 0 && (
-        <form className="flex col" onSubmit={handleSubmit}>
-          {controls.map(item => handleType(item))}
+        <form className="flex col" onSubmit={handleSubmit} noValidate>
+          {controls.map(item =>
+            !item.communicate ? handleType(item) : handleRelation(item)
+          )}
+
+          {Object.keys(errors).map(err => (
+            <span key={Math.random()} className="helper">
+              Invalid {err}
+            </span>
+          ))}
+
           <button className="btn">Submit</button>
         </form>
       )}
