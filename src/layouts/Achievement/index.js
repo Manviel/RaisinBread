@@ -31,10 +31,12 @@ const Achievement = () => {
         getRandomImage().then(json => {
           const res = json.data;
 
-          dispatch({
-            type: "update",
-            payload: { id: res.id, url: res.images.downsized.url }
-          });
+          if (!state.selected.includes(res.id)) {
+            dispatch({
+              type: "update",
+              payload: { id: res.id, url: res.images.downsized.url }
+            });
+          }
         });
       }
     } else {
