@@ -24,7 +24,7 @@ const Achievement = () => {
   const handleSubmit = () => {
     dispatch({ type: "click" });
 
-    const chance = Math.round(Math.random() * 1);
+    const chance = Math.floor(Math.random() * 2);
 
     if (chance === 1) {
       for (let i = 0; i < state.selected.length; i++) {
