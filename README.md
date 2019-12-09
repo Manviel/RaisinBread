@@ -1,7 +1,5 @@
 # Thimbles
 
-This project was deployed [Here](https://unruffled-bohr-fc41da.netlify.com).
-
 In the project directory, you can run:
 
 ### `npm start`

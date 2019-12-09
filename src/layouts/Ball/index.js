@@ -3,13 +3,13 @@ import React from "react";
 import "./Ball.css";
 
 const Ball = () => (
-  <div class="emoji shocked">
-    <figure class="face">
-      <span class="eyes">
-        <span class="eye"></span>
-        <span class="eye"></span>
+  <div className="emoji shocked">
+    <figure className="face">
+      <span className="eyes">
+        <span className="eye"></span>
+        <span className="eye"></span>
       </span>
-      <span class="mouth"></span>
+      <span className="mouth"></span>
     </figure>
   </div>
 );
