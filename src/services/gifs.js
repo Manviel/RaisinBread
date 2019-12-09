@@ -21,3 +21,11 @@ export const getTrendingImages = async () => {
 
   return await response.json();
 };
+
+export const getImageById = async id => {
+  const response = await fetch(
+    `${process.env.REACT_APP_API}/gifs/${id}?api_key=${process.env.REACT_APP_KEY}`
+  );
+
+  return await response.json();
+};

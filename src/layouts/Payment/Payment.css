@@ -1,0 +1,94 @@
+.payment {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  grid-template-areas:
+    "author author  . . . ."
+    "credit credit . . . code"
+    "nums nums nums nums nums ccv"
+    "exp exp date date . .";
+  grid-gap: 5px 0;
+  align-items: center;
+  padding: 1.5em;
+}
+
+.info {
+  border-radius: 9px;
+  background: var(--c-light);
+}
+
+.info:hover {
+  box-shadow: 0px 20px 20px 5px rgba(132, 132, 132, 0.3);
+  transition: all 0.5s ease;
+}
+
+.numbers {
+  grid-area: nums;
+  font-size: 19px;
+  list-style-type: none;
+  padding: 7px 24px;
+  letter-spacing: 1px;
+  justify-content: space-between;
+}
+
+.author {
+  grid-area: author;
+}
+
+.text {
+  text-align: center;
+}
+
+.date {
+  grid-area: date;
+}
+
+.ccv {
+  grid-area: ccv;
+}
+
+.credit {
+  grid-area: credit;
+}
+
+.exp {
+  grid-area: exp;
+}
+
+.code {
+  grid-area: code;
+}
+
+.panel {
+  position: relative;
+  margin-top: 80px;
+  padding: 1.5em 1.5em 1.5em 7em;
+}
+
+.cover {
+  background-position: center;
+  background-size: cover;
+  height: 80px;
+  width: 80px;
+  border-radius: 50%;
+  position: absolute;
+  bottom: 20px;
+  right: 155px;
+}
+
+.success {
+  position: fixed;
+  top: 80px;
+  right: 0;
+  opacity: 0;
+  transition: all 0.5s ease;
+  background-color: var(--c-green);
+  color: #fff;
+  padding: 8px 16px;
+  border-radius: 9px;
+}
+
+.anime {
+  opacity: 1;
+  right: 20px;
+}
