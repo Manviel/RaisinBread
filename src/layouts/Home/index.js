@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useCallback } from "react";
+import { Link } from "react-router-dom";
 
 import Card from "../../components/Card";
 import Loader from "../../components/Loader";
@@ -46,6 +47,10 @@ const Home = () => {
       </section>
 
       <Achievement />
+
+      <Link to="/tool" className="top">
+        Form generator
+      </Link>
     </>
   );
 };

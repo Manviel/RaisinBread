@@ -6,6 +6,8 @@ import Ball from "../Ball";
 
 import useForm from "../../utils/useForm";
 
+import renderType from "../../utils/renderType";
+
 import "../Login/Login.css";
 import "./ToolForm.css";
 
@@ -20,61 +22,9 @@ const ToolForm = () => {
     controls
   );
 
-  const handleType = arg => {
-    switch (arg.variation) {
-      case "input":
-        return (
-          <input
-            key={`fc-${arg.id}`}
-            name={arg.name}
-            type={arg.type}
-            className="control"
-            placeholder={arg.name}
-            required={arg.required}
-            value={values[arg.name] || ""}
-            onChange={handleChange}
-          />
-        );
-      case "textarea":
-        return (
-          <textarea
-            key={`fc-${arg.id}`}
-            name={arg.name}
-            className="control"
-            placeholder={arg.name}
-            required={arg.required}
-            value={values[arg.name] || ""}
-            onChange={handleChange}
-          ></textarea>
-        );
-      case "select":
-        return (
-          <select
-            key={`fc-${arg.id}`}
-            name={arg.name}
-            className="control"
-            required={arg.required}
-            value={values[arg.name] || ""}
-            onChange={handleChange}
-          >
-            <option key={`o-${arg.id}`} value="">
-              {arg.name}
-            </option>
-            {arg.type.split(", ").map(o => (
-              <option key={`${o}-${arg.id}`} value={o}>
-                {o}
-              </option>
-            ))}
-          </select>
-        );
-      default:
-        break;
-    }
-  };
-
   const handleRelation = item => {
     if (!errors[item.communicate]) {
-      return handleType(item);
+      return renderType(item, values, handleChange);
     }
   };
 
@@ -89,7 +39,9 @@ const ToolForm = () => {
       {controls.length > 0 && (
         <form className="flex col" onSubmit={handleSubmit} noValidate>
           {controls.map(item =>
-            !item.communicate ? handleType(item) : handleRelation(item)
+            !item.communicate
+              ? renderType(item, values, handleChange)
+              : handleRelation(item)
           )}
 
           {Object.keys(errors).map(err => (
