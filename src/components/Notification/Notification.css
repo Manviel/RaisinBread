@@ -1,0 +1,15 @@
+.notify {
+  position: fixed;
+  top: 80px;
+  right: 0;
+  opacity: 0;
+  transition: all 0.5s ease;
+  color: #ffffff;
+  padding: 8px 16px;
+  border-radius: 9px;
+}
+
+.success {
+  opacity: 1;
+  right: 20px;
+}

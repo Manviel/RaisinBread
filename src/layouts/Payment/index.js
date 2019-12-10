@@ -1,22 +1,51 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
+import { createPortal } from "react-dom";
+
+import { DataContext } from "../../utils/context";
+
+import Notification from "../../components/Notification";
 
 import { getImageById } from "../../services/gifs";
 
 import "./Payment.css";
 
 const Payment = ({ match }) => {
+  const { state, dispatch } = useContext(DataContext);
+
   const [preview, setPreview] = useState("");
-  const [show, setShow] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+
+  const [message, setMessage] = useState({
+    text: "",
+    color: ""
+  });
 
   const user = JSON.parse(localStorage.getItem("user"));
 
   useEffect(() => {
     getImageById(match.params.id).then(json => {
-      const res = json.data;
-
-      setPreview(res.images.fixed_height_small.url);
+      setPreview(json.data);
     });
   }, [match.params.id]);
+
+  const handlePay = () => {
+    setSubmitting(true);
+
+    if (!state.data.find(p => p.id === preview.id)) {
+      setMessage({ text: "Success", color: "#4cd964" });
+
+      dispatch({
+        type: "update",
+        payload: { id: preview.id, url: preview.images.downsized.url }
+      });
+    } else {
+      setMessage({ text: "Has already", color: "#FF9500" });
+    }
+
+    setTimeout(() => {
+      setSubmitting(false);
+    }, 2000);
+  };
 
   return (
     <>
@@ -40,15 +69,25 @@ const Payment = ({ match }) => {
         <p className="date">January 2018</p>
       </section>
 
-      <section className="panel info">
-        <article className={show ? "anime success" : "success"}>
-          Success
-        </article>
-        <div style={{ backgroundImage: `url(${preview})` }} className="cover" />
-        <button className="btn" onClick={() => setShow(!show)}>
-          Pay now
-        </button>
-      </section>
+      {!submitting && preview && (
+        <section className="panel info">
+          <div
+            style={{
+              backgroundImage: `url(${preview.images.fixed_height_small.url})`
+            }}
+            className="cover"
+          />
+
+          <button className="btn" onClick={handlePay}>
+            Pay now
+          </button>
+        </section>
+      )}
+
+      {createPortal(
+        <Notification show={submitting} message={message} />,
+        document.body
+      )}
     </>
   );
 };
