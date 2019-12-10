@@ -4,49 +4,30 @@ import Block from "../../components/Block";
 
 import "./Table.css";
 
+const winningСombinations = [
+  [0, 1, 2],
+  [3, 4, 5],
+  [6, 7, 8],
+  [0, 3, 6],
+  [1, 4, 7],
+  [2, 5, 8],
+  [0, 4, 8],
+  [2, 4, 6]
+];
+
 const Table = () => {
   const [table, setTable] = useState([0, 0, 0, 0, 0, 0, 0, 0, 0]);
   const [winner, setWinner] = useState([]);
-  const [last, setLast] = useState(Math.random() > 0.5 ? 5 : 3);
+  const [last, setLast] = useState(5);
 
   useEffect(() => {
-    for (let i = 0; i <= 2; i++) {
-      const idx = (i % 3) * 3;
+    for (let i = 0; i < winningСombinations.length; i++) {
+      const [a, b, c] = winningСombinations[i];
 
-      if (
-        table[idx] + table[idx + 1] + table[idx + 2] === 9 ||
-        table[idx] + table[idx + 1] + table[idx + 2] === 15
-      ) {
-        setWinner([idx, idx + 1, idx + 2]);
+      if (table[a] && table[a] === table[b] && table[a] === table[c]) {
+        setWinner(winningСombinations[i]);
         gameOver();
       }
-
-      if (
-        table[i] + table[i + 3] + table[i + 6] === 9 ||
-        table[i] + table[i + 3] + table[i + 6] === 15
-      ) {
-        setWinner([i, i + 3, i + 6]);
-        gameOver();
-      }
-    }
-
-    if (
-      table[0] + table[4] + table[8] === 15 ||
-      table[0] + table[4] + table[8] === 9
-    ) {
-      setWinner([0, 4, 8]);
-      gameOver();
-    }
-    if (
-      table[2] + table[4] + table[6] === 9 ||
-      table[2] + table[4] + table[6] === 15
-    ) {
-      setWinner([2, 4, 6]);
-      gameOver();
-    }
-
-    if (table.indexOf(0) === -1) {
-      gameOver();
     }
   }, [table]);
 
@@ -83,6 +64,8 @@ const Table = () => {
 
   return (
     <div className="table">
+      <p className="title">{last === 3 ? "X" : "O"} turn</p>
+
       {renderRows(0)}
       {renderRows(3)}
       {renderRows(6)}

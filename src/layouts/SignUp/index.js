@@ -1,6 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+import { Input } from "../../forms/Field";
+
 import useForm from "../../utils/useForm";
 import validate from "./validation";
 
@@ -22,46 +24,38 @@ const SignUp = props => {
   return (
     <form className="flex center col login" onSubmit={handleSubmit} noValidate>
       <h1 className="title">Sign Up</h1>
-      <input
+      <Input
         name="firstName"
         type="text"
-        placeholder="First name"
-        className="control"
         onChange={handleChange}
         value={values.firstName || ""}
+        error={errors.firstName}
         required
       />
-      {errors.firstName && <span className="helper">{errors.firstName}</span>}
-      <input
+      <Input
         name="lastName"
         type="text"
-        placeholder="Last name"
-        className="control"
         onChange={handleChange}
         value={values.lastName || ""}
+        error={errors.lastName}
         required
       />
-      {errors.lastName && <span className="helper">{errors.lastName}</span>}
-      <input
+      <Input
         name="email"
         type="email"
-        placeholder="Email"
-        className="control"
         onChange={handleChange}
         value={values.email || ""}
+        error={errors.email}
         required
       />
-      {errors.email && <span className="helper">{errors.email}</span>}
-      <input
+      <Input
         name="password"
         type="password"
-        placeholder="Password"
-        className="control"
         onChange={handleChange}
         value={values.password || ""}
+        error={errors.password}
         required
       />
-      {errors.password && <span className="helper">{errors.password}</span>}
       <button type="submit" className="btn">
         Sign up
       </button>

@@ -2,21 +2,6 @@
   padding: 70px 45px;
 }
 
-.control {
-  background-color: var(--c-light);
-  border-radius: 10px;
-  font-size: 17px;
-  padding: 10px 20px;
-  border: none;
-  margin: 12px 0;
-  color: inherit;
-}
-
-.helper {
-  color: #ff2d55;
-  margin-bottom: 12px;
-}
-
 .reference {
   color: #8c8c8c;
   font-size: 15px;
