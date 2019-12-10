@@ -24,7 +24,7 @@ const ToolForm = () => {
 
   const handleRelation = item => {
     if (!errors[item.communicate]) {
-      return renderType(item, values, handleChange);
+      return renderType(item, values, errors, handleChange);
     }
   };
 
@@ -40,15 +40,9 @@ const ToolForm = () => {
         <form className="flex col" onSubmit={handleSubmit} noValidate>
           {controls.map(item =>
             !item.communicate
-              ? renderType(item, values, handleChange)
+              ? renderType(item, values, errors, handleChange)
               : handleRelation(item)
           )}
-
-          {Object.keys(errors).map(err => (
-            <span key={Math.random()} className="helper">
-              Invalid {err}
-            </span>
-          ))}
 
           <button className="btn">Submit</button>
         </form>

@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
+import { Input } from "../../forms/Field";
+
 import useForm from "../../utils/useForm";
 import validate from "./validation";
 
@@ -34,26 +36,22 @@ const Login = props => {
     <form className="flex center col login" onSubmit={handleSubmit} noValidate>
       <h1 className="title">Login</h1>
       {status && <span className="helper top">{status}</span>}
-      <input
+      <Input
         name="email"
         type="email"
-        placeholder="Email"
-        className="control"
         onChange={handleChange}
         value={values.email || ""}
+        error={errors.email}
         required
       />
-      {errors.email && <span className="helper">{errors.email}</span>}
-      <input
+      <Input
         name="password"
         type="password"
-        placeholder="Password"
-        className="control"
         onChange={handleChange}
         value={values.password || ""}
+        error={errors.password}
         required
       />
-      {errors.password && <span className="helper">{errors.password}</span>}
       <button type="submit" className="btn">
         Log in
       </button>

@@ -1,51 +1,43 @@
 import React from "react";
 
-const renderType = (arg, values, handleChange) => {
+import { Input, Select, TextArea } from "../forms/Field";
+
+const renderType = (arg, values, errors, handleChange) => {
   switch (arg.variation) {
     case "input":
       return (
-        <input
+        <Input
           key={`fc-${arg.id}`}
           name={arg.name}
           type={arg.type}
-          className="control"
-          placeholder={arg.name}
-          required={arg.required}
-          value={values[arg.name] || ""}
           onChange={handleChange}
+          value={values[arg.name] || ""}
+          error={errors[arg.name]}
+          required={arg.required}
         />
       );
     case "textarea":
       return (
-        <textarea
+        <TextArea
           key={`fc-${arg.id}`}
           name={arg.name}
-          className="control"
-          placeholder={arg.name}
-          required={arg.required}
           value={values[arg.name] || ""}
+          required={arg.required}
           onChange={handleChange}
-        ></textarea>
+          error={errors[arg.name]}
+        />
       );
     case "select":
       return (
-        <select
+        <Select
           key={`fc-${arg.id}`}
           name={arg.name}
-          className="control"
           required={arg.required}
           value={values[arg.name] || ""}
           onChange={handleChange}
-        >
-          <option key={`o-${arg.id}`} value="">
-            {arg.name}
-          </option>
-          {arg.type.split(", ").map(o => (
-            <option key={`${o}-${arg.id}`} value={o}>
-              {o}
-            </option>
-          ))}
-        </select>
+          options={arg.type.split(", ")}
+          error={errors[arg.name]}
+        />
       );
     default:
       break;

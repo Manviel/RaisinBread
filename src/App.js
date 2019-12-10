@@ -2,7 +2,7 @@ import React, { Suspense, lazy } from "react";
 import { Route, Switch } from "react-router-dom";
 
 import Loader from "./components/Loader";
-import Checkbox from "./components/Checkbox";
+import Checkbox from "./forms/Checkbox";
 
 import useTheme from "./utils/useTheme";
 import PrivateRoute from "./utils/PrivateRoute";
