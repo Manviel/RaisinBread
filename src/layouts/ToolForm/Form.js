@@ -1,6 +1,7 @@
 import React from "react";
 
 import Checkbox from "../../forms/Checkbox";
+import { Input, Select } from "../../forms/Field";
 
 import useForm from "../../utils/useForm";
 import validate from "./validation";
@@ -30,69 +31,75 @@ const Form = ({ controls, setControls }) => {
       noValidate
     >
       <div className="flex col center group">
-        <label className="label">Type of control</label>
-        <select
+        <Select
+          label="Type of control"
           name="variation"
-          className="control"
           onChange={handleChange}
           value={values.variation || ""}
+          error={errors.variation}
+          options={[
+            {
+              key: "Input",
+              value: "input"
+            },
+            {
+              key: "Textarea",
+              value: "textarea"
+            },
+            {
+              key: "Select",
+              value: "select"
+            }
+          ]}
           required
-        >
-          <option value="">Type of control</option>
-          <option value="input">Input</option>
-          <option value="textarea">Textarea</option>
-          <option value="select">Select</option>
-        </select>
-        {errors.variation && <span className="helper">{errors.variation}</span>}
+        />
       </div>
 
       <div className="flex col center group">
-        <label className="label">Name of control</label>
-        <input
+        <Input
+          label="Name of control"
           name="name"
           type="text"
-          className="control"
-          placeholder="Name of control"
           onChange={handleChange}
           value={values.name || ""}
+          error={errors.name}
           required
         />
-        {errors.name && <span className="helper">{errors.name}</span>}
       </div>
 
       {values.variation && (
         <div className="flex col center group">
           {values.variation === "input" && (
-            <>
-              <label className="label">Type of input</label>
-              <select
-                name="type"
-                className="control"
-                onChange={handleChange}
-                value={values.type || ""}
-                required
-              >
-                <option value="">Type of input</option>
-                <option value="text">Text</option>
-                <option value="number">Number</option>
-              </select>
-            </>
+            <Select
+              label="Type of input"
+              name="type"
+              onChange={handleChange}
+              value={values.type || ""}
+              error={errors.type}
+              options={[
+                {
+                  key: "Text",
+                  value: "text"
+                },
+                {
+                  key: "Number",
+                  value: "number"
+                }
+              ]}
+              required
+            />
           )}
           {values.variation === "select" && (
-            <>
-              <label className="label">Write options separated by commas</label>
-              <input
-                name="type"
-                type="text"
-                className="control"
-                placeholder="Write options separated by commas"
-                onChange={handleChange}
-                value={values.type || ""}
-                required
-              />
-            </>
+            <Input
+              label="Write options separated by commas"
+              name="type"
+              type="text"
+              onChange={handleChange}
+              value={values.type || ""}
+              error={errors.type}
+              required
+            />
           )}
-          {errors.type && <span className="helper">{errors.type}</span>}
         </div>
       )}
 
@@ -107,21 +114,18 @@ const Form = ({ controls, setControls }) => {
 
       {controls.length >= 1 && (
         <div className="flex col center group">
-          <label className="label">Select control to communicate</label>
-          <select
+          <Select
+            label="Select control to communicate"
             name="communicate"
-            className="control"
             onChange={handleChange}
             value={values.communicate || ""}
+            error={errors.communicate}
+            options={controls.map(c => ({
+              key: c.name,
+              value: c.name
+            }))}
             required
-          >
-            <option value="">Select control to communicate</option>
-            {controls.map(c => (
-              <option key={`op-${c.id}`} value={c.name}>
-                {c.name}
-              </option>
-            ))}
-          </select>
+          />
         </div>
       )}
 

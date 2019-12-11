@@ -35,7 +35,10 @@ const renderType = (arg, values, errors, handleChange) => {
           required={arg.required}
           value={values[arg.name] || ""}
           onChange={handleChange}
-          options={arg.type.split(", ")}
+          options={arg.type.split(", ").map(t => ({
+            key: t,
+            value: t
+          }))}
           error={errors[arg.name]}
         />
       );

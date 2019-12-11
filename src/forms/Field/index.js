@@ -3,10 +3,11 @@ import React from "react";
 import "./Input.css";
 
 export const Input = props => {
-  const { name, type, required, value, onChange, error } = props;
+  const { name, type, required, value, onChange, error, label } = props;
 
   return (
     <>
+      {label && <label className="label">{label}</label>}
       <input
         name={name}
         type={type}
@@ -22,10 +23,11 @@ export const Input = props => {
 };
 
 export const Select = props => {
-  const { name, options, required, value, onChange, error } = props;
+  const { name, options, required, value, onChange, error, label } = props;
 
   return (
     <>
+      {label && <label className="label">{label}</label>}
       <select
         name={name}
         required={required}
@@ -35,8 +37,8 @@ export const Select = props => {
       >
         <option value="">{name}</option>
         {options.map(o => (
-          <option key={Math.random()} value={o}>
-            {o}
+          <option key={Math.random()} value={o.value}>
+            {o.key}
           </option>
         ))}
       </select>
