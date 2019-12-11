@@ -43,4 +43,10 @@ Open [http://localhost:3001](http://localhost:3001) to view it in the browser.
 
 ## Deployment
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+To run the production version you need:
+
+```
+make prod
+```
+
+Open [http://localhost:80](http://localhost:80) to view it in the browser.
