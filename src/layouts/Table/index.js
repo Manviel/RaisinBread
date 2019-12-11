@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
 import Block from "../../components/Block";
 
@@ -20,7 +20,7 @@ const Table = () => {
   const [winner, setWinner] = useState([]);
   const [last, setLast] = useState(5);
 
-  useEffect(() => {
+  const calculateWinner = () => {
     for (let i = 0; i < winningСombinations.length; i++) {
       const [a, b, c] = winningСombinations[i];
 
@@ -29,7 +29,7 @@ const Table = () => {
         gameOver();
       }
     }
-  }, [table]);
+  };
 
   const gameOver = () => {
     setTimeout(() => {
@@ -45,6 +45,7 @@ const Table = () => {
       last={[last, setLast]}
       table={[table, setTable]}
       winner={winner}
+      calculateWinner={calculateWinner}
     />
   );
 

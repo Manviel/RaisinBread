@@ -8,8 +8,7 @@ const Block = props => {
   const [last, setLast] = props.last;
   const [table, setTable] = props.table;
 
-  const number = props.number;
-  const winner = props.winner;
+  const { number, winner, calculateWinner } = props;
 
   const handleTable = () => {
     let newTable = [...table];
@@ -25,6 +24,7 @@ const Block = props => {
   const handleClick = () => {
     if (table[number] === 0 && winner.length === 0) {
       setTable(handleTable());
+      calculateWinner();
     }
   };
 
