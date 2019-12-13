@@ -15,6 +15,7 @@ const SignUp = lazy(() => import("./layouts/SignUp"));
 const Trending = lazy(() => import("./layouts/Trending"));
 const NotFound = lazy(() => import("./layouts/NotFound"));
 const ToolForm = lazy(() => import("./layouts/ToolForm"));
+const Payment = lazy(() => import("./layouts/Payment"));
 
 const App = () => {
   const [theme, setTheme] = useTheme();
@@ -33,6 +34,7 @@ const App = () => {
           <PrivateRoute exact path="/" component={Home} />
           <PrivateRoute exact path="/achievement" component={Achievement} />
           <PrivateRoute exact path="/trending" component={Trending} />
+          <PrivateRoute exact path="/pay/:id" component={Payment} />
           <Route path="/login" render={props => <Login {...props} />} />
           <Route path="/signup" render={props => <SignUp {...props} />} />
           <Route path="/tool" component={ToolForm} />

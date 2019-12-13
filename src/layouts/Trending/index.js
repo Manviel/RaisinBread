@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 import Table from "../Table";
 
@@ -21,11 +22,12 @@ const Trending = () => {
     <section className="flex center wrapper top">
       {suggestions.length > 0 ? (
         suggestions.map(su => (
-          <div
-            key={su.id}
-            style={{ backgroundImage: `url(${su.images.downsized.url})` }}
-            className="item"
-          />
+          <Link key={su.id} to={`/pay/${su.id}`}>
+            <div
+              style={{ backgroundImage: `url(${su.images.downsized.url})` }}
+              className="item"
+            />
+          </Link>
         ))
       ) : (
         <Loader />
