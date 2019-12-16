@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 import Card from "../../components/Card";
@@ -15,13 +15,9 @@ const Home = () => {
   const [offset, setOffset] = useState(0);
   const [disable, setDisable] = useState(false);
 
-  const getData = useCallback(() => {
+  useEffect(() => {
     getImages(offset).then(json => setData(json.data));
   }, [offset]);
-
-  useEffect(() => {
-    getData();
-  }, [getData]);
 
   const chance = Math.round(Math.random() * 2);
 
