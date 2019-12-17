@@ -4,15 +4,23 @@ import Image from "./Image";
 
 import "./Block.css";
 
-const Block = props => {
-  const [last, setLast] = props.last;
-  const [table, setTable] = props.table;
+import { SquareBlockProps, TicTac } from "../../types";
 
-  const { number, winner, calculateWinner } = props;
+const Block = (props: SquareBlockProps) => {
+  const {
+    number,
+    winner,
+    calculateWinner,
+    table,
+    last,
+    setTable,
+    setLast
+  } = props;
 
-  const handleTable = () => {
+  const handleTable = (past: TicTac) => {
     let newTable = [...table];
-    let newLast = last === 3 ? 5 : 3;
+
+    let newLast = past === 3 ? 5 : 3;
 
     newTable[number] = newLast;
 
@@ -23,7 +31,7 @@ const Block = props => {
 
   const handleClick = () => {
     if (table[number] === 0 && winner.length === 0) {
-      setTable(handleTable());
+      setTable(handleTable(last));
       calculateWinner();
     }
   };

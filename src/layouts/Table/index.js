@@ -42,8 +42,10 @@ const Table = () => {
     <Block
       key={"sqr " + i}
       number={i}
-      last={[last, setLast]}
-      table={[table, setTable]}
+      last={last}
+      setLast={setLast}
+      table={table}
+      setTable={setTable}
       winner={winner}
       calculateWinner={calculateWinner}
     />

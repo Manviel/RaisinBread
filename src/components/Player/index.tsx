@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import YouTube from "react-youtube";
+import YouTube, { Options } from "react-youtube";
 
 import { DataContext } from "../../utils/context";
 
@@ -10,7 +10,7 @@ const Player = () => {
 
   const [canClose, setClose] = useState(false);
 
-  const params = {
+  const params: Options = {
     height: "390",
     width: "640",
     playerVars: {

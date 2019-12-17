@@ -2,7 +2,9 @@ import React from "react";
 
 import "./Notification.css";
 
-const Notification = ({ show, message }) => {
+import { NotifyProps } from "../../types";
+
+const Notification = ({ show, message }: NotifyProps) => {
   const { color, text } = message;
 
   return (

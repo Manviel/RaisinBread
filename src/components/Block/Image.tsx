@@ -1,6 +1,8 @@
 import React from "react";
 
-const Image = ({ winner, tableNum, number }) => {
+import { BlockType } from "../../types";
+
+const Image = ({ winner, tableNum, number }: BlockType) => {
   if (tableNum === 5) {
     return (
       <div className={winner.indexOf(number) !== -1 ? "win cross" : "cross"} />

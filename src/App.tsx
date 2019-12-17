@@ -1,5 +1,5 @@
 import React, { Suspense, lazy } from "react";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, RouteComponentProps } from "react-router-dom";
 
 import Loader from "./components/Loader";
 import Checkbox from "./forms/Checkbox";
@@ -35,8 +35,14 @@ const App = () => {
           <PrivateRoute exact path="/achievement" component={Achievement} />
           <PrivateRoute exact path="/trending" component={Trending} />
           <PrivateRoute exact path="/pay/:id" component={Payment} />
-          <Route path="/login" render={props => <Login {...props} />} />
-          <Route path="/signup" render={props => <SignUp {...props} />} />
+          <Route
+            path="/login"
+            render={(props: RouteComponentProps) => <Login {...props} />}
+          />
+          <Route
+            path="/signup"
+            render={(props: RouteComponentProps) => <SignUp {...props} />}
+          />
           <Route path="/tool" component={ToolForm} />
           <Route path="*" component={NotFound} />
         </Switch>

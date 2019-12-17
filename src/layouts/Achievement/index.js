@@ -68,7 +68,7 @@ const Achievement = () => {
 
       {state.selected.length > 0 && (
         <>
-          <Progress items={state.selected.length} />
+          <Progress itemsLength={state.selected.length} />
           <button className="btn top" onClick={handleSubmit}>
             Make a bet
           </button>

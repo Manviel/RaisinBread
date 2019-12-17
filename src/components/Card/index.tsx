@@ -4,6 +4,8 @@ import { DataContext } from "../../utils/context";
 
 import "./Card.css";
 
+import { CardProps, GiphyType } from "../../types";
+
 const Card = ({
   gif,
   offset,
@@ -12,12 +14,12 @@ const Card = ({
   chance,
   disable,
   setDisable
-}) => {
+}: CardProps) => {
   const { dispatch } = useContext(DataContext);
 
   const [popup, setPopup] = useState();
 
-  const handleClick = item => {
+  const handleClick = (item: GiphyType) => {
     setDisable(true);
 
     if (index === chance) {
