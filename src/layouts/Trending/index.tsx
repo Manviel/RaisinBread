@@ -9,6 +9,8 @@ import { getTrendingImages } from "../../services/gifs";
 
 import "./Trending.css";
 
+import { GiphyType } from "../../types";
+
 const Trending = () => {
   const [suggestions, setSuggestions] = useState([]);
 
@@ -21,7 +23,7 @@ const Trending = () => {
   return (
     <section className="flex center wrapper top">
       {suggestions.length > 0 ? (
-        suggestions.map(su => (
+        suggestions.map((su: GiphyType) => (
           <Link key={su.id} to={`/pay/${su.id}`}>
             <div
               style={{ backgroundImage: `url(${su.images.downsized.url})` }}

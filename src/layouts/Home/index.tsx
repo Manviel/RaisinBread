@@ -10,6 +10,8 @@ import { getImages } from "../../services/gifs";
 
 import "./Home.css";
 
+import { GiphyType } from "../../types";
+
 const Home = () => {
   const [data, setData] = useState([]);
   const [offset, setOffset] = useState(0);
@@ -25,7 +27,7 @@ const Home = () => {
     <>
       <section className="flex center wrapper home top">
         {data.length > 0 ? (
-          data.map((gif, index) => (
+          data.map((gif: GiphyType, index) => (
             <Card
               key={gif.slug}
               gif={gif}

@@ -1,12 +1,14 @@
+import { Dispatch, SetStateAction } from "react";
+
 export type TicTac = 3 | 5;
 
 export interface SquareBlockProps {
   number: number;
   last: TicTac;
   table: number[];
-  winner: [];
-  setTable: (value: number[]) => number;
-  setLast: (value: number) => number;
+  winner: number[];
+  setTable: Dispatch<SetStateAction<number[]>>;
+  setLast: Dispatch<SetStateAction<TicTac>>;
   calculateWinner: () => void;
 }
 
@@ -19,6 +21,9 @@ export interface BlockType {
 export interface GiphyImage {
   url: string;
   downsized: {
+    url: string;
+  };
+  fixed_height_small: {
     url: string;
   };
 }
@@ -36,8 +41,8 @@ export interface CardProps {
   index: number;
   chance: number;
   disable: boolean;
-  setOffset: (value: number) => number;
-  setDisable: (value: boolean) => boolean;
+  setOffset: Dispatch<SetStateAction<number>>;
+  setDisable: Dispatch<SetStateAction<boolean>>;
 }
 
 export interface NotifyProps {
@@ -50,4 +55,18 @@ export interface NotifyProps {
 
 export interface ProgressProps {
   itemsLength: number;
+}
+
+export interface Metadata {
+  key: string;
+  value: any;
+}
+
+export interface MetadataObj {
+  [key: string]: {};
+}
+
+export interface RouteParams {
+  id: string;
+  params?: string;
 }

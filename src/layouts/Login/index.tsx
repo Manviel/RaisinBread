@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, RouteComponentProps } from "react-router-dom";
 
 import { Input } from "../../forms/Field";
 
@@ -8,11 +8,13 @@ import validate from "./validation";
 
 import "./Login.css";
 
-const Login = props => {
+import { MetadataObj } from "../../types";
+
+const Login = (props: RouteComponentProps) => {
   const [status, setStatus] = useState();
 
-  const login = () => {
-    const user = JSON.parse(localStorage.getItem("user"));
+  const login = (values: MetadataObj) => {
+    const user = JSON.parse(localStorage.getItem("user") || "{}");
 
     if (
       user &&

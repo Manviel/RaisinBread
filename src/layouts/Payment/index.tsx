@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useContext } from "react";
 import { createPortal } from "react-dom";
+import { RouteComponentProps } from "react-router-dom";
 
 import { DataContext } from "../../utils/context";
 
@@ -9,10 +10,12 @@ import { getImageById } from "../../services/gifs";
 
 import "./Payment.css";
 
-const Payment = ({ match }) => {
+import { GiphyType, RouteParams } from "../../types";
+
+const Payment = ({ match }: RouteComponentProps<RouteParams>) => {
   const { state, dispatch } = useContext(DataContext);
 
-  const [preview, setPreview] = useState("");
+  const [preview, setPreview] = useState<GiphyType>();
   const [submitting, setSubmitting] = useState(false);
 
   const [message, setMessage] = useState({
@@ -20,7 +23,7 @@ const Payment = ({ match }) => {
     color: ""
   });
 
-  const user = JSON.parse(localStorage.getItem("user"));
+  const user = JSON.parse(localStorage.getItem("user") || "{}");
 
   useEffect(() => {
     getImageById(match.params.id).then(json => {
@@ -28,15 +31,15 @@ const Payment = ({ match }) => {
     });
   }, [match.params.id]);
 
-  const handlePay = () => {
+  const handlePay = (view: GiphyType) => {
     setSubmitting(true);
 
-    if (!state.data.find(p => p.id === preview.id)) {
+    if (!state.data.find((p: GiphyType) => p.id === view.id)) {
       setMessage({ text: "Success", color: "#4cd964" });
 
       dispatch({
         type: "update",
-        payload: { id: preview.id, url: preview.images.downsized.url }
+        payload: { id: view.id, url: view.images.downsized.url }
       });
     } else {
       setMessage({ text: "Has already", color: "#FF9500" });
@@ -78,7 +81,7 @@ const Payment = ({ match }) => {
             className="cover"
           />
 
-          <button className="btn" onClick={handlePay}>
+          <button className="btn" onClick={() => handlePay(preview)}>
             Pay now
           </button>
         </section>

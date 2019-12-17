@@ -1,8 +1,10 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect, FormEvent } from "react";
 
-const useForm = (callback, validate, custom) => {
-  const [values, setValues] = useState({});
-  const [errors, setErrors] = useState({});
+import { MetadataObj } from "../types";
+
+const useForm = (callback: any, validate: any, custom?: any) => {
+  const [values, setValues] = useState<MetadataObj>({});
+  const [errors, setErrors] = useState<MetadataObj>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   useEffect(() => {
@@ -13,14 +15,14 @@ const useForm = (callback, validate, custom) => {
     }
   }, [errors, callback, isSubmitting]);
 
-  const handleSubmit = event => {
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     if (event) event.preventDefault();
 
     setErrors(validate(values, custom));
     setIsSubmitting(true);
   };
 
-  const handleChange = event => {
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     event.persist();
 
     const value =

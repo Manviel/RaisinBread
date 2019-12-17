@@ -10,14 +10,16 @@ import { getRandomImage } from "../../services/gifs";
 
 import "./Achievement.css";
 
+import { GiphyType } from "../../types";
+
 const Achievement = () => {
   const { state, dispatch } = useContext(DataContext);
 
-  const handleSelect = id => {
-    if (state.selected.includes(id)) {
-      dispatch({ type: "remove", payload: id });
+  const handleSelect = (gif: GiphyType) => {
+    if (state.selected.includes(gif.id)) {
+      dispatch({ type: "remove", payload: gif.id });
     } else {
-      dispatch({ type: "select", payload: id });
+      dispatch({ type: "select", payload: gif.id });
     }
   };
 
@@ -49,14 +51,14 @@ const Achievement = () => {
       {state.data.length > 0 ? (
         <>
           <article className="flex wrapper">
-            {state.data.map(gif => (
+            {state.data.map((gif: GiphyType) => (
               <div
                 key={gif.id}
                 style={{ backgroundImage: `url(${gif.url})` }}
                 className={
                   state.selected.includes(gif.id) ? "img active" : "img"
                 }
-                onClick={() => handleSelect(gif.id)}
+                onClick={() => handleSelect(gif)}
               />
             ))}
           </article>

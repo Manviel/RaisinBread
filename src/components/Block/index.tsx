@@ -20,7 +20,7 @@ const Block = (props: SquareBlockProps) => {
   const handleTable = (past: TicTac) => {
     let newTable = [...table];
 
-    let newLast = past === 3 ? 5 : 3;
+    let newLast: TicTac = past === 3 ? 5 : 3;
 
     newTable[number] = newLast;
 

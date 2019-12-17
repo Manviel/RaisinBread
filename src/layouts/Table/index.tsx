@@ -4,6 +4,8 @@ import Block from "../../components/Block";
 
 import "./Table.css";
 
+import { TicTac } from "../../types";
+
 const winningСombinations = [
   [0, 1, 2],
   [3, 4, 5],
@@ -17,8 +19,8 @@ const winningСombinations = [
 
 const Table = () => {
   const [table, setTable] = useState([0, 0, 0, 0, 0, 0, 0, 0, 0]);
-  const [winner, setWinner] = useState([]);
-  const [last, setLast] = useState(5);
+  const [winner, setWinner] = useState<number[]>([]);
+  const [last, setLast] = useState<TicTac>(5);
 
   const calculateWinner = () => {
     for (let i = 0; i < winningСombinations.length; i++) {
@@ -38,7 +40,7 @@ const Table = () => {
     }, 2000);
   };
 
-  const renderSquare = i => (
+  const renderSquare = (i: number) => (
     <Block
       key={"sqr " + i}
       number={i}
@@ -51,7 +53,7 @@ const Table = () => {
     />
   );
 
-  const renderSquares = n => {
+  const renderSquares = (n: number) => {
     let squares = [];
 
     for (let i = n; i < n + 3; i++) {
@@ -61,17 +63,13 @@ const Table = () => {
     return squares;
   };
 
-  const renderRows = i => {
-    return <article className="flex">{renderSquares(i)}</article>;
-  };
-
   return (
     <div className="table">
       <p className="title">{last === 3 ? "X" : "O"} turn</p>
 
-      {renderRows(0)}
-      {renderRows(3)}
-      {renderRows(6)}
+      <article className="flex">{renderSquares(0)}</article>
+      <article className="flex">{renderSquares(3)}</article>
+      <article className="flex">{renderSquares(6)}</article>
     </div>
   );
 };

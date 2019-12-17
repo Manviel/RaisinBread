@@ -1,8 +1,8 @@
 import React from "react";
-import { withRouter } from "react-router";
+import { withRouter, RouteComponentProps } from "react-router";
 import { NavLink } from "react-router-dom";
 
-const Header = props => {
+const Header = (props: RouteComponentProps) => {
   const activeUser = localStorage.getItem("active");
 
   const handleSubmit = () => {

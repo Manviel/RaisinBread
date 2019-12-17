@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, RouteComponentProps } from "react-router-dom";
 
 import { Input } from "../../forms/Field";
 
@@ -8,7 +8,7 @@ import validate from "./validation";
 
 import "../Login/Login.css";
 
-const SignUp = props => {
+const SignUp = (props: RouteComponentProps) => {
   const signUp = () => {
     localStorage.setItem("user", JSON.stringify(values));
     localStorage.setItem("active", JSON.stringify(values));
