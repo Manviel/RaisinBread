@@ -6,17 +6,18 @@ import { Input, Select } from "../../forms/Field";
 import useForm from "../../utils/useForm";
 import validate from "./validation";
 
-const Form = ({ controls, setControls }) => {
+import { ToolFromProps, FormControl } from "../../types";
+
+const Form = ({ controls, setControls }: ToolFromProps) => {
   const submit = () => {
-    setControls([
-      ...controls,
-      {
-        id: Math.random()
-          .toString(36)
-          .substr(2, 9),
-        ...values
-      }
-    ]);
+    const newObj: FormControl = {
+      id: Math.random()
+        .toString(36)
+        .substr(2, 9),
+      ...values
+    };
+
+    setControls([...controls, newObj]);
   };
 
   const { values, errors, handleChange, handleSubmit } = useForm(

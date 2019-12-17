@@ -70,3 +70,17 @@ export interface RouteParams {
   id: string;
   params?: string;
 }
+
+export interface FormControl {
+  id: string;
+  variation?: string;
+  name?: string;
+  type?: string;
+  required?: boolean;
+  communicate?: string;
+}
+
+export interface ToolFromProps {
+  controls: FormControl[];
+  setControls: Dispatch<SetStateAction<FormControl[]>>;
+}
